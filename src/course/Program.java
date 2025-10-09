@@ -1,29 +1,39 @@
 package course;
 
+import java.util.Scanner;
+
 public class Program {
     public static void main(String[] args){
 
-        String original = "abcde FGHIJ ABC abc DEFG    ";
+        Scanner sc = new Scanner(System.in);
 
-        String s01 = original.toLowerCase();
-        String s02 = original.toUpperCase();
-        String s03 = original.trim();
-        String s04 = original.substring(2);
-        String s05 = original.substring(2, 9);
-        String s06 = original.replace('a', 'x');
-        String s07 = original.replace("abc", "xy");
-        int i = original.indexOf("bc");
-        int j = original.lastIndexOf("bc");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
 
-        System.out.println("Original: -" + original+"-");
-        System.out.println("To Lower Case: -"+ s01+"-");
-        System.out.println("To Upper Case: -" + s02 + "-");
-        System.out.println("Trim: -" + s03 + "-");
-        System.out.println("SubString 2: -" + s04 + "-");
-        System.out.println("SubString 2-9: -" + s05 + "-");
-        System.out.println("Replace(a,x): -" + s06 + "-");
-        System.out.println("Replace(abc,xy): -" + s07 + "-");
-        System.out.println("First index of bc: "+ i);
-        System.out.println("Last index of bc: "+ j);
+        int higher = max(a, b, c);
+
+        showResult(higher);
+
+        sc.close();
+    }
+    public static int max(int x, int y, int z){
+        int aux;
+
+        if (x > y && x > z){
+            aux = x;
+        }
+        else if (y > z){
+            aux = y;
+        }
+        else {
+            aux = z;
+        }
+
+        return aux;
+    }
+
+    public static void showResult(int value){
+        System.out.println("Higher: " + value);
     }
 }

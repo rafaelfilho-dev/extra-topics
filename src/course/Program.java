@@ -1,51 +1,39 @@
 package course;
+import entities.Triangle;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
+
+        Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Quantos produtos diferentes você comprou? ");
-        int numProdutos = sc.nextInt();
-        sc.nextLine(); // limpar buffer do nextInt
+        Triangle x, y;
+        x = new Triangle();
+        y = new Triangle();
+        System.out.println("Enter the measures of triangle X: ");
+        x.a = sc.nextDouble();
+        x.b = sc.nextDouble();
+        x.c = sc.nextDouble();
+        System.out.println("Enter the measures of triangle Y: ");
+        y.a = sc.nextDouble();
+        y.b = sc.nextDouble();
+        y.c = sc.nextDouble();
 
-        double totalCompra = 0.0;
-        double maiorPreco = 0.0;
-        String produtoMaisCaro = "Nenhum";
-        int totalUnidades = 0;
+        double areaX = x.area();
+        double areaY = y.area();
 
-        for (int i = 1; i <= numProdutos; i++) {
-            System.out.printf("%nProduto %d:%n", i);
+        System.out.printf("Triangle X area: %.4f%n", areaX);
+        System.out.printf("Triangle Y area: %.4f%n", areaY);
 
-            System.out.print("Nome: ");
-            String nome = sc.nextLine();
-
-            System.out.print("Preço unitário: ");
-            double preco = sc.nextDouble();
-
-            System.out.print("Quantidade: ");
-            int qtd = sc.nextInt();
-            sc.nextLine(); // limpar buffer
-
-            double subtotal = preco * qtd;
-            totalCompra += subtotal;
-            totalUnidades += qtd;
-
-            if (preco > maiorPreco) {
-                maiorPreco = preco;
-                produtoMaisCaro = nome;
-            }
+        if (areaX > areaY) {
+            System.out.println("Larger area: X");
         }
-
-        double mediaPorProduto = totalCompra / numProdutos;
-        double mediaPorUnidade = totalCompra / totalUnidades;
-
-        System.out.println("\n=== RESUMO DA COMPRA ===");
-        System.out.printf("Valor total: R$%.2f%n", totalCompra);
-        System.out.printf("Média por produto: R$%.2f%n", mediaPorProduto);
-        System.out.printf("Média por unidade: R$%.2f%n", mediaPorUnidade);
-        System.out.printf("Produto mais caro: %s (R$%.2f)%n", produtoMaisCaro, maiorPreco);
+        else {
+            System.out.println("Larger area: Y");
+        }
 
         sc.close();
     }

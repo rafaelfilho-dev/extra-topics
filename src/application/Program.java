@@ -2,6 +2,7 @@ package application;
 
 import entities.Employee;
 import entities.Rectangle;
+import entities.Student;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -11,23 +12,13 @@ public class Program {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        Employee employee = new Employee();
+        Student student = new Student();
+        student.name = sc.nextLine();
+        student.grade1 = sc.nextDouble();
+        student.grade2 = sc.nextDouble();
+        student.grade3 = sc.nextDouble();
 
-        System.out.print("Name: ");
-        employee.name = sc.nextLine();
-        System.out.print("Gross Salary: ");
-        employee.grossSalary = sc.nextDouble();
-        System.out.print("Tax: ");
-        employee.tax = sc.nextDouble();
-
-        System.out.println(employee.toString());
-
-        System.out.print("Which percentage to increase salary? ");
-        double percentage = sc.nextDouble();
-        employee.IncreaseSalary(percentage);
-
-        System.out.println("Updated data: "+employee.toString());
-
+        System.out.println(student.toString());
         sc.close();
     }
 }

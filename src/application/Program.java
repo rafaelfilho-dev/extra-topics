@@ -1,5 +1,6 @@
 package application;
 
+import entities.Employee;
 import entities.Rectangle;
 
 import java.util.Locale;
@@ -10,15 +11,22 @@ public class Program {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        Rectangle rectangle = new Rectangle();
+        Employee employee = new Employee();
 
-        System.out.println("Enter rectangle width and height");
-        rectangle.width = sc.nextDouble();
-        rectangle.height = sc.nextDouble();
+        System.out.print("Name: ");
+        employee.name = sc.nextLine();
+        System.out.print("Gross Salary: ");
+        employee.grossSalary = sc.nextDouble();
+        System.out.print("Tax: ");
+        employee.tax = sc.nextDouble();
 
-        System.out.println("AREA = " + rectangle.Area());
-        System.out.println("PERIMETER = " + rectangle.Perimeter());
-        System.out.println("DIAGONAL = " + rectangle.Diagonal());
+        System.out.println(employee.toString());
+
+        System.out.print("Which percentage to increase salary? ");
+        double percentage = sc.nextDouble();
+        employee.IncreaseSalary(percentage);
+
+        System.out.println("Updated data: "+employee.toString());
 
         sc.close();
     }
